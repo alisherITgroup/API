@@ -1,0 +1,801 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /problems/all/:
+    get:
+      operationId: listProblems
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=400&limit=100
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=200&limit=100
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Problem'
+          description: ''
+      tags:
+      - problems
+    post:
+      operationId: createProblem
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Problem'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+      tags:
+      - problems
+  /problems/all/{id}/:
+    get:
+      operationId: retrieveProblem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this problem.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+      tags:
+      - problems
+    put:
+      operationId: updateProblem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this problem.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Problem'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+      tags:
+      - problems
+    patch:
+      operationId: partialUpdateProblem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this problem.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Problem'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Problem'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+          description: ''
+      tags:
+      - problems
+    delete:
+      operationId: destroyProblem
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this problem.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - problems
+  /problems/tags/:
+    get:
+      operationId: listTags
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=400&limit=100
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=200&limit=100
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - problems
+    post:
+      operationId: createTag
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - problems
+  /problems/tags/{id}/:
+    get:
+      operationId: retrieveTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - problems
+    put:
+      operationId: updateTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - problems
+    patch:
+      operationId: partialUpdateTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Tag'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Tag'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+          description: ''
+      tags:
+      - problems
+    delete:
+      operationId: destroyTag
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this tag.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - problems
+  /problems/languages/:
+    get:
+      operationId: listLanguages
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=400&limit=100
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=200&limit=100
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Language'
+          description: ''
+      tags:
+      - problems
+    post:
+      operationId: createLanguage
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Language'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: ''
+      tags:
+      - problems
+  /problems/languages/{id}/:
+    get:
+      operationId: retrieveLanguage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this language.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: ''
+      tags:
+      - problems
+    put:
+      operationId: updateLanguage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this language.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Language'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: ''
+      tags:
+      - problems
+    patch:
+      operationId: partialUpdateLanguage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this language.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Language'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Language'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
+          description: ''
+      tags:
+      - problems
+    delete:
+      operationId: destroyLanguage
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this language.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - problems
+  /problems/comments/:
+    get:
+      operationId: listComments
+      description: ''
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 123
+                  next:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=400&limit=100
+                  previous:
+                    type: string
+                    nullable: true
+                    format: uri
+                    example: http://api.example.org/accounts/?offset=200&limit=100
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - problems
+    post:
+      operationId: createComment
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - problems
+  /problems/comments/{id}/:
+    get:
+      operationId: retrieveComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - problems
+    put:
+      operationId: updateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - problems
+    patch:
+      operationId: partialUpdateComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+      tags:
+      - problems
+    delete:
+      operationId: destroyComment
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this comment.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - problems
+components:
+  schemas:
+    Problem:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        slug:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        problem:
+          type: string
+        timelimit:
+          type: integer
+        memorylimit:
+          type: integer
+        difficulty:
+          type: integer
+        price:
+          type: integer
+        infoin:
+          type: string
+          nullable: true
+        infoout:
+          type: string
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        simpletests:
+          type: object
+          nullable: true
+        tests:
+          type: object
+          nullable: true
+        solution:
+          type: string
+          nullable: true
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_date:
+          type: string
+          format: date-time
+          readOnly: true
+        author:
+          type: integer
+        solvers:
+          type: array
+          items:
+            type: integer
+        errors:
+          type: array
+          items:
+            type: integer
+        likes:
+          type: array
+          items:
+            type: integer
+        unlikes:
+          type: array
+          items:
+            type: integer
+      required:
+      - name
+      - problem
+      - difficulty
+      - price
+      - author
+      - solvers
+      - errors
+      - likes
+      - unlikes
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - name
+    Language:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        command:
+          type: string
+          maxLength: 200
+        name:
+          type: string
+          maxLength: 100
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_date:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - command
+      - name
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        reply_id:
+          type: integer
+          nullable: true
+        body:
+          type: string
+        created_date:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_date:
+          type: string
+          format: date-time
+          readOnly: true
+        author:
+          type: integer
+      required:
+      - body
+      - author
